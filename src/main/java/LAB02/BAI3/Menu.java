@@ -2,73 +2,36 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
-package LAB02.BAI2;
+package LAB02.BAI3;
 
+import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.Scanner;
 
 /**
  *
  * @author HUYNH ANH
  */
-public class NewMain {
+public class Menu {
 
-    public static ArrayList<SinhVien> ds = new ArrayList<>();
+   public static SinhVien sv = null;
+  public static ArrayList<SinhVien> ds = new ArrayList<>();
 
-    public static SinhVien sv = null;
-
-    public static void main(String[] args) {
-        ArrayList<SinhVien> ds = new ArrayList<>();
-        Scanner sc = new Scanner(System.in);
-        int chon;
-        do {
-            System.out.println("===chuong trinh===");
-            System.out.println("1. Nhap danh sach sinh vien: ");
-            System.out.println("2. Xuat thong ti danh sach sinh vien: ");
-            System.out.println("3. Xuat danh sach sinh vien co hoc luc gioi: ");
-            System.out.println("4. Sap xep danh sac sinh vien theo diem: ");
-            System.out.println("0. Thoat.");
-            System.out.println("--Moi ban chon--");
-            chon = sc.nextInt();
-            if (chon != 0) {
-                switch (chon) {
-                    case 1:
-                        nhapDS();
-                        break;
-                    case 2:
-                        xuatDS();
-                        break;
-                    case 3:
-                        xuatSVGioi();
-                        break;
-                    case 4:
-                        sapXep();
-                        break;
-                    default:
-                        System.out.println("Nhap sai nhap lai");
-                        break;
-                }
-            }
-
-        } while (chon != 5);
-
-    }
-
-    private static void nhapDS() {
+    public static void nhapDS() {
         System.out.println("Thuc hien nhap:");
-        String nghanh;
-        int chon = 0;
-        Scanner sc = new Scanner(System.in);
+        SinhVien sv = null;
+                Scanner sc = new Scanner(System.in);
 
-        String tieptuc;
-        tieptuc = sc.nextLine();
+        int chon = 0;
+        String tieptuc = "y";
+       tieptuc= sc.nextLine();
 
         do {
             System.out.println("Cho biet loai sinh vien (IT:1,Biz:2): ");
-            nghanh = sc.nextLine();
-            if (nghanh.equalsIgnoreCase("IT")) {
+            chon = sc.nextInt();
+            sc.nextLine();
+            if (chon == 1) {
                 System.out.println("Cho biet ho ten: ");
                 String hoten = sc.nextLine();
                 System.out.println("Diem mon java: ");
@@ -78,9 +41,7 @@ public class NewMain {
                 System.out.println("Diem mon html: ");
                 double diemHtml = sc.nextDouble();
                 sv = new SinhVienIT(diemJava, diemCss, diemHtml, hoten, hoten);
-                tieptuc = sc.nextLine();
-
-            } else if (nghanh.equalsIgnoreCase("Biz")) {
+            } else if (chon == 2) {
                 System.out.println("Cho biet ho ten: ");
                 String hoten = sc.nextLine();
                 System.out.println("Diem mon marketing: ");
@@ -92,9 +53,7 @@ public class NewMain {
             if (sv != null) {
                 ds.add(sv);
             }
-
-        } while (!tieptuc.equalsIgnoreCase(tieptuc));
-        System.out.println("tiep khong");
+        } while (true);
 
     }
 
@@ -126,6 +85,42 @@ public class NewMain {
         };
 
         Collections.sort(ds, cmp);
-        sv.xuat();
+    }
+
+    public void menu() {
+        Scanner sc = new Scanner(System.in);
+        int chon;
+        do {
+            System.out.println("===chuong trinh===");
+            System.out.println("1. Nhap danh sach sinh vien: ");
+            System.out.println("2. Xuat thong ti danh sach sinh vien: ");
+            System.out.println("3. Xuat danh sach sinh vien co hoc luc gioi: ");
+            System.out.println("4. Sap xep danh sac sinh vien theo diem: ");
+            System.out.println("0. Thoat.");
+            System.out.println("--Moi ban chon--");
+            chon = sc.nextInt();
+            if (chon != 0) {
+                switch (chon) {
+                    case 0:
+                        break;
+                    case 1:
+                        nhapDS();
+                        break;
+                    case 2:
+                        xuatDS();
+                        break;
+                    case 3:
+                        xuatSVGioi();
+                        break;
+                    case 4:
+                        sapXep();
+                        break;
+                    default:
+                        System.out.println("Nhap sai nhap lai");
+                }
+            }
+
+        } while (chon != 0);
+
     }
 }
