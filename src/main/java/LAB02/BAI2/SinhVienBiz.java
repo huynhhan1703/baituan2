@@ -8,6 +8,19 @@ package LAB02.BAI2;
  *
  * @author HUYNH ANH
  */
-public class SinhVienBiz{
+public class SinhVienBiz extends SinhVien{
+    private double diemMarketing;
+    private double diemSales;
+
+    public SinhVienBiz(double diemMarketing, double diemSales, String hoten, String nghanh) {
+        super(hoten, nghanh);
+        this.diemMarketing = diemMarketing;
+        this.diemSales = diemSales;
+    }
+@Override
+  double getDiem(){
+      return (2*diemMarketing+diemSales)/2 ;
+    }
     
 }
+ 

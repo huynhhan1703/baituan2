@@ -10,17 +10,25 @@ package LAB02.BAI2;
  */
 public abstract class SinhVien {
 
-    public String hoten;
-    public String nghanh;
+    private String hoten;
+    private String nghanh;
 
     public SinhVien(String hoten, String nghanh) {
         this.hoten = hoten;
         this.nghanh = nghanh;
     }
 
-    abstract public double getDiem();
+    public String getHoten() {
+        return hoten;
+    }
 
-    public String getHocLuc() {
+    public String getNghanh() {
+        return nghanh;
+    }
+
+    abstract double getDiem();
+
+    public  String getHocLuc() {
         String kq = "";
         double dtb = getDiem();
         if (dtb < 5) {
@@ -38,5 +46,9 @@ public abstract class SinhVien {
             kq = "xuat sac";
         }
         return kq;
+    }
+
+    public void xuat() {
+        System.out.println("ho ten :" + getHoten() + "nghanh" + getNghanh() + "diem" + getDiem() + "hoc luc" + getHocLuc());
     }
 }

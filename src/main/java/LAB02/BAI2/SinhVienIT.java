@@ -9,18 +9,21 @@ package LAB02.BAI2;
  * @author HUYNH ANH
  */
 public class SinhVienIT extends SinhVien{
-    public double java;
-    public double css;
-    public double html;
+    private double diemJava;
+    private double diemCss;
+    private double diemHtml;
 
-    public SinhVienIT(double java, double css, double html, String hoten) {
-        super(hoten);
-        this.java = java;
-        this.css = css;
-        this.html = html;
+    public SinhVienIT(double diemJava, double diemCss, double diemHtml, String hoten, String nghanh) {
+        super(hoten, nghanh);
+        this.diemJava = diemJava;
+        this.diemCss = diemCss;
+        this.diemHtml = diemHtml;
     }
 
-  
+    
+@Override
+  double getDiem(){
+      return (2*diemJava+diemCss+diemHtml)/4  ;
     }
     
 }
